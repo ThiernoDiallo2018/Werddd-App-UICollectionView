@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		00999EC12A1DC5F800448F11 /* ReusableUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00999EC02A1DC5F800448F11 /* ReusableUIView.swift */; };
-		00ACDE762A2184F30008D9C5 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ACDE752A2184F30008D9C5 /* APIConstants.swift */; };
 		00C4E4802A187ACF0060A9C4 /* DefinitionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C4E47F2A187ACF0060A9C4 /* DefinitionCellView.swift */; };
 		00D636572A1939E300E981B8 /* SecondDefinitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D636562A1939E300E981B8 /* SecondDefinitionViewController.swift */; };
 		00E5B6C92A08328600FEB1FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E5B6C82A08328600FEB1FE /* AppDelegate.swift */; };
@@ -24,7 +23,6 @@
 
 /* Begin PBXFileReference section */
 		00999EC02A1DC5F800448F11 /* ReusableUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableUIView.swift; sourceTree = "<group>"; };
-		00ACDE752A2184F30008D9C5 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		00C4E47F2A187ACF0060A9C4 /* DefinitionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionCellView.swift; sourceTree = "<group>"; };
 		00D636562A1939E300E981B8 /* SecondDefinitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondDefinitionViewController.swift; sourceTree = "<group>"; };
 		00E5B6C52A08328600FEB1FE /* Werddd App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Werddd App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,7 +76,6 @@
 				00999EC02A1DC5F800448F11 /* ReusableUIView.swift */,
 				00E5B6DE2A08347200FEB1FE /* CardViewWithColor.swift */,
 				00C4E47F2A187ACF0060A9C4 /* DefinitionCellView.swift */,
-				00ACDE752A2184F30008D9C5 /* APIConstants.swift */,
 				00E5B6E02A08355000FEB1FE /* RefreshButton.swift */,
 				00E5B6E22A08357500FEB1FE /* Definitions.swift */,
 				00E5B6D12A08328800FEB1FE /* Assets.xcassets */,
@@ -159,7 +156,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				00E5B6E32A08357500FEB1FE /* Definitions.swift in Sources */,
-				00ACDE762A2184F30008D9C5 /* APIConstants.swift in Sources */,
 				00E5B6CD2A08328600FEB1FE /* MainViewController.swift in Sources */,
 				00E5B6E12A08355100FEB1FE /* RefreshButton.swift in Sources */,
 				00E5B6DD2A08344200FEB1FE /* BottomViewController.swift in Sources */,

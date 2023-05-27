@@ -36,7 +36,9 @@ class DefinitionCellView: UICollectionViewCell {
     }()
     
      */
+
     
+    ///oiodjpodjpddd
     
     
     private let collectionWord: UILabel = {
