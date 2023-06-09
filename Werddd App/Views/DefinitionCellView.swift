@@ -13,9 +13,6 @@ class DefinitionCellView: UICollectionViewCell {
     
     static let ID = "ViewCellForDefinitions"
     
-    
-    
-    
     private let stackView: UIStackView = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -37,8 +34,7 @@ class DefinitionCellView: UICollectionViewCell {
     
      */
 
-    
-    ///oiodjpodjpddd
+
     
     
     private let collectionWord: UILabel = {

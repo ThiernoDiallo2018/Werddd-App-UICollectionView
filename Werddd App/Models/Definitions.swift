@@ -7,47 +7,8 @@
 
 import UIKit
 
-/*
-
-struct Definition {
-    
-    let word: String
-    let type: String // either "noun" or "adjective"
-    let definition: String
-    
-}
-
-// MARK: Data Model
-
-let definitions: [Definition] = [
-    Definition(word: "Abacus", type: "noun", definition: "A manual calculating device that consists of beads on rods or wires"),
-    Definition(word: "Bifurcate", type: "verb", definition: "To divide into two branches or forks"),
-    Definition(word: "Cacophony", type: "noun", definition: "A harsh, discordant mixture of sounds"),
-    Definition(word: "Dichotomy", type: "noun", definition: "A division or contrast between two things that are or are represented as being opposed or entirely different"),
-    Definition(word: "Euphoria", type: "noun", definition: "A feeling of intense happiness or excitement"),
-    Definition(word: "Furtive", type: "adjective", definition: "Attempting to avoid notice or attention, typically because of guilt or a belief that discovery would lead to trouble; secretive"),
-    Definition(word: "Gregarious", type: "adjective", definition: "Fond of company; sociable"),
-    Definition(word: "Hypocrisy", type: "noun", definition: "The practice of claiming to have moral standards or beliefs to which one's own behavior does not conform"),
-    Definition(word: "Inferno", type: "noun", definition: "A large fire that is dangerously out of control"),
-    Definition(word: "Juxtapose", type: "verb", definition: "To place side by side for contrast or comparison"),
-    Definition(word: "Kinetic", type: "adjective", definition: "Relating to or resulting from motion"),
-    Definition(word: "Luminous", type: "adjective", definition: "Full of or shedding light; bright or shining, especially in the dark"),
-    Definition(word: "Metamorphosis", type: "noun", definition: "The process of transformation from an immature form to an adult form in two or more distinct stages"),
-    Definition(word: "Nihilism", type: "noun", definition: "The rejection of all religious and moral principles, often in the belief that life is meaningless"),
-    Definition(word: "Ostentatious", type: "adjective", definition: "Characterized by pretentious or showy display; designed to impress"),
-    Definition(word: "Panacea", type: "noun", definition: "A solution or remedy for all problems or difficulties"),
-    Definition(word: "Quintessential", type: "adjective", definition: "Representing the most perfect or typical example of a quality or class"),
-    Definition(word: "Reticent", type: "adjective", definition: "Not revealing one's thoughts or feelings readily; reserved"),
-    Definition(word: "Sycophant", type: "noun", definition: "A person who acts obsequiously toward someone important in order to gain advantage"),
-    Definition(word: "Truculent", type: "adjective", definition: "Eager or quick to argue or fight; aggressively defiant"),
-    Definition(word: "Ubiquitous", type: "adjective", definition: "Present, appearing, or found everywhere"),
-    Definition(word: "Vicarious", type: "adjective", definition: "Experienced in the imagination through the feelings or actions of another person"),
-    Definition(word: "Wistful", type: "adjective", definition: "Having or showing a feeling of vague or regretful longing"),
-]
 
 
-
-*/
 
 // Can pass in the Data Model below but making an instance
 // let def = Definitions().definitions
@@ -245,3 +206,6 @@ let definitions: [Definition] = [
         example: "She lived vicariously through her favorite character in the novel."
     )
 ]
+
+
+

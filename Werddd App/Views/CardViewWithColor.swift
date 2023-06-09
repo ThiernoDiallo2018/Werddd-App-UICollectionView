@@ -47,9 +47,9 @@ class CardViewWithColor: UIView {
     
     lazy var refreshButton: RefreshButton = {
         let button = RefreshButton { //the logic that is being passed in will be set to the completion property which is a closure in refreshbutton class
-            
             self.completion?()
         }
+        
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
         

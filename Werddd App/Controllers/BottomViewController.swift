@@ -24,6 +24,16 @@ class BottomViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(DefinitionCellView.self, forCellWithReuseIdentifier: DefinitionCellView.ID)
+       
+       /*
+       
+       collectionView.register(HeaderCollectionView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionView.id)
+       
+       
+       */
+       
+       
+       
         collectionView.delegate = self
         collectionView.dataSource = self
         return collectionView
@@ -67,8 +77,6 @@ extension BottomViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DefinitionCellView.ID, for: indexPath) as? DefinitionCellView else {
             return UICollectionViewCell()
         }
@@ -78,13 +86,36 @@ extension BottomViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        
         navigationController?.pushViewController(SecondDefinitionViewController(definition: definitions[indexPath.row]), animated: true)
     }
     
     
+    /*
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionView.id, for: indexPath) as? HeaderCollectionView else {
+            
+            return UICollectionReusableView()
+        }
+        return headerView
+    }
+    
+    
+    */
+    
 }
+
+
+
+extension BottomViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: view.frame.size.width, height: 50)
+    }
+}
+
+
+
+
 
 
 

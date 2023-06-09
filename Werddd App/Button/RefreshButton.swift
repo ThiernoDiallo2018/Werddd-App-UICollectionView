@@ -8,7 +8,7 @@ import UIKit
 
 class RefreshButton: UIButton {
     
-    var completion: (() -> Void)? //this is helping us pass in logic into our buttonTapped
+    var completion: (() -> Void)? //this is helping us pass in logic into our buttonTapped - layers
     
     init(completion: (() -> Void)?) {
         super.init(frame: .zero)

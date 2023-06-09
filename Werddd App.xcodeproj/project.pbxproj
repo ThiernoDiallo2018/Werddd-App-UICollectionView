@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0051E6BF2A25366600A6E0BC /* HeaderCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0051E6BE2A25366600A6E0BC /* HeaderCollectionView.swift */; };
+		0051E6C12A27591C00A6E0BC /* Definitions2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0051E6C02A27591C00A6E0BC /* Definitions2.swift */; };
+		0051E6C72A280A8C00A6E0BC /* NetworkingLead.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0051E6C62A280A8C00A6E0BC /* NetworkingLead.swift */; };
+		0051E6C92A280B2500A6E0BC /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0051E6C82A280B2500A6E0BC /* APIConstant.swift */; };
 		00999EC12A1DC5F800448F11 /* ReusableUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00999EC02A1DC5F800448F11 /* ReusableUIView.swift */; };
+		00A688012A33A08D004BD90F /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A688002A33A08D004BD90F /* Word.swift */; };
+		00A688042A33B052004BD90F /* SearchViewBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A688032A33B052004BD90F /* SearchViewBar.swift */; };
 		00C4E4802A187ACF0060A9C4 /* DefinitionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C4E47F2A187ACF0060A9C4 /* DefinitionCellView.swift */; };
 		00D636572A1939E300E981B8 /* SecondDefinitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D636562A1939E300E981B8 /* SecondDefinitionViewController.swift */; };
 		00E5B6C92A08328600FEB1FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E5B6C82A08328600FEB1FE /* AppDelegate.swift */; };
@@ -22,7 +28,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0051E6BE2A25366600A6E0BC /* HeaderCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionView.swift; sourceTree = "<group>"; };
+		0051E6C02A27591C00A6E0BC /* Definitions2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definitions2.swift; sourceTree = "<group>"; };
+		0051E6C62A280A8C00A6E0BC /* NetworkingLead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingLead.swift; sourceTree = "<group>"; };
+		0051E6C82A280B2500A6E0BC /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
 		00999EC02A1DC5F800448F11 /* ReusableUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableUIView.swift; sourceTree = "<group>"; };
+		00A688002A33A08D004BD90F /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		00A688032A33B052004BD90F /* SearchViewBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewBar.swift; sourceTree = "<group>"; };
 		00C4E47F2A187ACF0060A9C4 /* DefinitionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionCellView.swift; sourceTree = "<group>"; };
 		00D636562A1939E300E981B8 /* SecondDefinitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondDefinitionViewController.swift; sourceTree = "<group>"; };
 		00E5B6C52A08328600FEB1FE /* Werddd App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Werddd App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +61,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0051E6C22A275A1500A6E0BC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				00E5B6E22A08357500FEB1FE /* Definitions.swift */,
+				0051E6C02A27591C00A6E0BC /* Definitions2.swift */,
+				00A688002A33A08D004BD90F /* Word.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0051E6C32A275A5B00A6E0BC /* System */ = {
+			isa = PBXGroup;
+			children = (
+				00E5B6C82A08328600FEB1FE /* AppDelegate.swift */,
+				00E5B6CA2A08328600FEB1FE /* SceneDelegate.swift */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
+		0051E6C42A275A8000A6E0BC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				00E5B6CC2A08328600FEB1FE /* MainViewController.swift */,
+				00E5B6DC2A08344200FEB1FE /* BottomViewController.swift */,
+				00D636562A1939E300E981B8 /* SecondDefinitionViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0051E6C52A275AAB00A6E0BC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				00999EC02A1DC5F800448F11 /* ReusableUIView.swift */,
+				00E5B6DE2A08347200FEB1FE /* CardViewWithColor.swift */,
+				00C4E47F2A187ACF0060A9C4 /* DefinitionCellView.swift */,
+				0051E6BE2A25366600A6E0BC /* HeaderCollectionView.swift */,
+				00A688032A33B052004BD90F /* SearchViewBar.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		00A688022A33ACB5004BD90F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0051E6C82A280B2500A6E0BC /* APIConstant.swift */,
+				0051E6C62A280A8C00A6E0BC /* NetworkingLead.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		00A688052A33B2D2004BD90F /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				00E5B6E02A08355000FEB1FE /* RefreshButton.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
 		00E5B6BC2A08328600FEB1FE = {
 			isa = PBXGroup;
 			children = (
@@ -68,16 +138,12 @@
 		00E5B6C72A08328600FEB1FE /* Werddd App */ = {
 			isa = PBXGroup;
 			children = (
-				00E5B6C82A08328600FEB1FE /* AppDelegate.swift */,
-				00E5B6CA2A08328600FEB1FE /* SceneDelegate.swift */,
-				00E5B6CC2A08328600FEB1FE /* MainViewController.swift */,
-				00E5B6DC2A08344200FEB1FE /* BottomViewController.swift */,
-				00D636562A1939E300E981B8 /* SecondDefinitionViewController.swift */,
-				00999EC02A1DC5F800448F11 /* ReusableUIView.swift */,
-				00E5B6DE2A08347200FEB1FE /* CardViewWithColor.swift */,
-				00C4E47F2A187ACF0060A9C4 /* DefinitionCellView.swift */,
-				00E5B6E02A08355000FEB1FE /* RefreshButton.swift */,
-				00E5B6E22A08357500FEB1FE /* Definitions.swift */,
+				0051E6C32A275A5B00A6E0BC /* System */,
+				0051E6C42A275A8000A6E0BC /* Controllers */,
+				0051E6C52A275AAB00A6E0BC /* Views */,
+				00A688052A33B2D2004BD90F /* Button */,
+				0051E6C22A275A1500A6E0BC /* Models */,
+				00A688022A33ACB5004BD90F /* Network */,
 				00E5B6D12A08328800FEB1FE /* Assets.xcassets */,
 				00E5B6D32A08328800FEB1FE /* LaunchScreen.storyboard */,
 				00E5B6D62A08328800FEB1FE /* Info.plist */,
@@ -157,13 +223,19 @@
 			files = (
 				00E5B6E32A08357500FEB1FE /* Definitions.swift in Sources */,
 				00E5B6CD2A08328600FEB1FE /* MainViewController.swift in Sources */,
+				00A688012A33A08D004BD90F /* Word.swift in Sources */,
 				00E5B6E12A08355100FEB1FE /* RefreshButton.swift in Sources */,
+				00A688042A33B052004BD90F /* SearchViewBar.swift in Sources */,
+				0051E6C72A280A8C00A6E0BC /* NetworkingLead.swift in Sources */,
+				0051E6C12A27591C00A6E0BC /* Definitions2.swift in Sources */,
 				00E5B6DD2A08344200FEB1FE /* BottomViewController.swift in Sources */,
+				0051E6BF2A25366600A6E0BC /* HeaderCollectionView.swift in Sources */,
 				00E5B6DF2A08347200FEB1FE /* CardViewWithColor.swift in Sources */,
 				00E5B6C92A08328600FEB1FE /* AppDelegate.swift in Sources */,
 				00E5B6CB2A08328600FEB1FE /* SceneDelegate.swift in Sources */,
 				00D636572A1939E300E981B8 /* SecondDefinitionViewController.swift in Sources */,
 				00C4E4802A187ACF0060A9C4 /* DefinitionCellView.swift in Sources */,
+				0051E6C92A280B2500A6E0BC /* APIConstant.swift in Sources */,
 				00999EC12A1DC5F800448F11 /* ReusableUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
