@@ -17,15 +17,14 @@ protocol SearchDelegate: AnyObject {
 
 class SearchViewBar: UIView {
     
-    weak var searchDefinitions: (SearchDelegate)? // we have tied this delegate using this property
+    weak var searchDefinitionsDelegate: (SearchDelegate)? // we have tied this delegate using this property
 
     
     let stackView: UIStackView = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
-        stack.distribution = .equalSpacing
-        stack.backgroundColor = .darkGray
+        stack.spacing = 10
         return stack
     }()
  
@@ -34,6 +33,7 @@ class SearchViewBar: UIView {
         text.translatesAutoresizingMaskIntoConstraints = false
         text.placeholder = "Input a Definition"
         text.backgroundColor = .darkGray
+        text.textColor = .systemBlue
         
         let searchIcon = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
         searchIcon.image = UIImage(systemName: "magnifyingglass")
@@ -44,7 +44,7 @@ class SearchViewBar: UIView {
         searchContainer.addSubview(searchIcon)
         
         text.leftView = searchContainer
-        text.leftViewMode = .whileEditing
+        text.leftViewMode = .always
   
         return text
         
@@ -64,31 +64,42 @@ class SearchViewBar: UIView {
     
     
     
-    init(searchDefinitions: SearchDelegate?) {
+    init(searchDefinitionsDelegate: SearchDelegate?) {
         super.init(frame: .zero)
         
-        self.searchDefinitions = searchDefinitions
+        self.searchDefinitionsDelegate = searchDefinitionsDelegate
+        setUpSearchBarUI()
     }
     
     required init?(coder: NSCoder) {
-nil
+                    nil
         
     }
     
     @objc func searchButtonPressed() {
         print("Hiiii")
         
-        searchDefinitions?.searchDefinitionAPI(search: textField.text)
+        searchDefinitionsDelegate?.searchDefinitionAPI(search: textField.text)
     }
     
     
     func setUpSearchBarUI() {
-        backgroundColor = .white
-        
+        backgroundColor = .darkGray
         stackView.addArrangedSubview(textField)
         stackView.addArrangedSubview(button)
         
         addSubview(stackView)
+        
+        NSLayoutConstraint.activate([
+            
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            button.widthAnchor.constraint(equalToConstant: 100)
+                                    
+                                    
+        ])
         
     }
     

@@ -13,6 +13,17 @@ class SecondDefinitionViewController: UIViewController {
     
     // MARK: UI Properties
     
+    
+    let wordDetails: apiWordDetail // passed in so we can label out network data to the strings we want displayed
+
+    let selectedWord: String //connects all the way back to the data point in defintion cell in our method - collectionWord.text = word
+    let dataManager: DataManager
+    var isFavorited: Bool = false {
+        didSet {
+           updateRightBarButton()
+        }
+    }
+    
     // this scroll will house everything below and more on the Reusable UIVIew
     
     let scrollView: UIScrollView = {
@@ -34,26 +45,39 @@ class SecondDefinitionViewController: UIViewController {
     }()
     
     
-   lazy var definitionInfo: ReusableUIView = {
-       let view = ReusableUIView(title: "Definition" , descriptionText: definition.definition, partOfSpeech: definition.type, backgroundColor: .white)
+   lazy var definitionInfo: DetailsView = {
+       let view = DetailsView(title: "Definition" ,
+                                 descriptionText: wordDetails.definition,
+                                 partOfSpeech: wordDetails.partOfSpeech,
+                                 backgroundColor: .white)
        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-   lazy var synonymsInfo: ReusableUIView = {
-       let view = ReusableUIView(title: "Synonym", descriptionText: definition.synonyms, partOfSpeech: "", backgroundColor: .black)
+   lazy var synonymsInfo: DetailsView = {
+       let view = DetailsView(title: "Synonym",
+                                 descriptionText: wordDetails.synonyms?.joined(separator: ", "),
+                                 partOfSpeech: nil,
+                                 backgroundColor: .black)
        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-   lazy var antonymsInfo: ReusableUIView = {
-       let view = ReusableUIView(title: "Antonyms", descriptionText: definition.antonyms, partOfSpeech: "", backgroundColor: .white)
+   lazy var antonymsInfo: DetailsView = {
+       let view = DetailsView(title: "Antonyms",
+                                 descriptionText: wordDetails.antonyms?.joined(separator: ","),
+                                 partOfSpeech: nil,
+                                 backgroundColor: .white)
        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-  lazy  var exmapleInfo: ReusableUIView = {
-      let view = ReusableUIView(title: "Example", descriptionText: definition.example, partOfSpeech: "", backgroundColor: .black )
+  lazy  var exampleInfo: DetailsView = {
+      let view = DetailsView(title: "Example",
+                                descriptionText: wordDetails.examples?.joined(separator: "\n\n"),
+                                partOfSpeech: nil,
+                                backgroundColor: .black )
+      
       view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -64,21 +88,19 @@ class SecondDefinitionViewController: UIViewController {
     // MARK: Properties
     
     
-    var definition: Definition // Remember - always need to init when passing in data into a new VC
+    //var definition: Definition // Remember - always need to init when passing in data into a new VC
   
-    init(definition: Definition) {
-        self.definition = definition
+    init(wordDetails: apiWordDetail, selectedWord: String, dataManager: DataManager = DataManager()) {
+        self.wordDetails = wordDetails
+        self.selectedWord = selectedWord
+        self.dataManager = dataManager
         
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    
-    
-
+ 
     // MARK: Lifecycle
     
 
@@ -88,8 +110,16 @@ class SecondDefinitionViewController: UIViewController {
         view.backgroundColor = .darkGray
         
         navigationSetUp()
-        
         setUpUI()
+        
+        dataManager.fetchFavoriteWord(definition: wordDetails.definition ?? "What is happening", title: selectedWord) { favoriteWord in
+            guard favoriteWord != nil else {
+                isFavorited = false
+                return
+            }
+            
+            isFavorited = true
+        }
 
     }
     
@@ -102,7 +132,7 @@ class SecondDefinitionViewController: UIViewController {
         let textAtrributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.largeTitleTextAttributes = textAtrributes
         
-        navigationItem.title = definition.word
+        navigationItem.title = selectedWord
     }
     
     func setUpUI() {
@@ -111,7 +141,6 @@ class SecondDefinitionViewController: UIViewController {
     }
     
     func addScrollView() {
-        
         view.addSubview(scrollView)
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -126,7 +155,7 @@ class SecondDefinitionViewController: UIViewController {
         pageStackView.addArrangedSubview(definitionInfo)
         pageStackView.addArrangedSubview(synonymsInfo)
         pageStackView.addArrangedSubview(antonymsInfo)
-        pageStackView.addArrangedSubview(exmapleInfo)
+        pageStackView.addArrangedSubview(exampleInfo)
         
         scrollView.addSubview(pageStackView)
         
@@ -141,4 +170,21 @@ class SecondDefinitionViewController: UIViewController {
         ])
     }
     
+     func updateRightBarButton() {
+        if isFavorited {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart.fill"), style: .done, target: self, action: #selector(removeWordFromFavorites))
+        } else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .done, target: self, action: #selector(addToFavorites))
+        }
+    }
+    
+    @objc func addToFavorites() {
+        dataManager.createFavoriteWord(from: selectedWord, and: wordDetails)
+        isFavorited = true
+    }
+    
+    @objc func removeWordFromFavorites() {
+        dataManager.delete(title: selectedWord, definition: wordDetails.definition ?? "Hahahah")
+        isFavorited = false
+    }
 }

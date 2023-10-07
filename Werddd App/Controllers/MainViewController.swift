@@ -11,18 +11,27 @@ import Foundation
 
 class MainViewController: UIViewController {
     //For the button HomeVC is passing it down to CardWithColor which is passing down the action to refresh button. Now the logic can be kept in our homeVC
+
+    let networkingRandom: NetworkingLead
     
-    //Keep logic in view controllers
         
     lazy var cardView: CardViewWithColor = {
         let view = CardViewWithColor { [weak self] in
-            self?.randomWordChosen()  //referring to the HomeVC
+            self?.loadRandomWordChosen()  //referring to the MainVC - talking to it
         }
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
         
     }()
     
+    
+    let headerStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        return stackView
+    }()
     
     let appTitle: UILabel = {
         let label = UILabel()
@@ -32,10 +41,25 @@ class MainViewController: UIViewController {
         return label
     }()
     
+    
+    lazy var favoritesListButton: UIButton = {
+        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 30, weight: .medium, scale: .medium)
+        let image = UIImage(systemName: "heart.text.square.fill", withConfiguration: symbolConfiguration)
+
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(image, for: .normal)
+        button.imageView?.tintColor = UIColor.systemPink
+        button.addTarget(self, action: #selector(favoritesListButtonPressed), for: .touchUpInside)
+        return button
+    }()
+    
+    
+    
     let bottomViewContainer: UIView = {
         let bottomContainer = UIView()
         bottomContainer.translatesAutoresizingMaskIntoConstraints = false
-        bottomContainer.layer.cornerRadius = 30
+        bottomContainer.layer.cornerRadius = 40
         return bottomContainer
     }()
     
@@ -43,14 +67,24 @@ class MainViewController: UIViewController {
     
     // MARK: - Life Cycle
     
+    init(networkingRandom: NetworkingLead = NetworkingLead()) {
+        self.networkingRandom = networkingRandom
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Thierno Diallo - Werdd App"
+        navigationItem.title = "TD Werdd App"
         
         view.backgroundColor = .gray
         
-        setUpUI()
         
         let bottomViewController = BottomViewController()
         addChild(bottomViewController)
@@ -59,26 +93,34 @@ class MainViewController: UIViewController {
         bottomViewController.view.frame = bottomViewContainer.frame
         
         
+        setUpUI()
+        
     }
     
     // MARK: - UI Setup
     
     func setUpUI() {
-        setUpAppTitle()
+        setUpAppHeader()
         cardViewContainer()
         setUpBottomContainer()
+        loadRandomWordChosen()
         
     }
     
     
-    func setUpAppTitle() {
-        view.addSubview(appTitle)
+    
+    func setUpAppHeader() {
+        headerStackView.addArrangedSubview(appTitle)
+        headerStackView.addArrangedSubview(favoritesListButton)
+        
+        view.addSubview(headerStackView)
         
         NSLayoutConstraint.activate([
-            appTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            appTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            appTitle.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor)
+            headerStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            headerStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            headerStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
+        
     }
     
     
@@ -104,22 +146,39 @@ class MainViewController: UIViewController {
         ])
     }
     
+ 
+     func loadRandomWordChosen() {
+        
+        networkingRandom.networkingRandomWordURL { [weak self] result in
+            switch result {
+            case .success(let randomWord):
+                DispatchQueue.main.async {
+                    self?.cardView.word.text = randomWord.word
+                    self?.cardView.type.text = randomWord.results?.first?.partOfSpeech
+                    self?.cardView.definition.text = randomWord.results?.first?.definition
+                }
+            case .failure( _):
+                print("\(String(describing: self?.networkingRandom.errorNotice))")
+            }
+
+            }
+        }
     
-    //MARK: - Actions
-    
-    func randomWordChosen() {
-        let randomWord = definitions.randomElement()
-        cardView.word.text = randomWord?.word
-        cardView.type.text = randomWord?.type
-        cardView.definition.text = randomWord?.definition
+    @objc func favoritesListButtonPressed() {
+        navigationController?.pushViewController(FavoriteViewController(dataManager: DataManager()), animated: true)
     }
-    
-    
-    
 }
+    
+    
 
 
 
 
-
-
+/*
+func randomWordChosen() {
+    let randomWord = definitions.randomElement()
+    cardView.word.text = randomWord?.word
+    cardView.type.text = randomWord?.type
+    cardView.definition.text = randomWord?.definition
+}
+*/

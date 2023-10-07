@@ -20,23 +20,7 @@ class DefinitionCellView: UICollectionViewCell {
         stack.distribution = .fillEqually
         return stack
     }()
-    
-    /*
-    
-    private let view: UIView = {
-        let uiView = UIView()
-        uiView.translatesAutoresizingMaskIntoConstraints = false
-        uiView.backgroundColor = .black
-        uiView.layer.cornerRadius = 20
-        return uiView
-        
-    }()
-    
-     */
 
-
-    
-    
     private let collectionWord: UILabel = {
         let word = UILabel()
        // word.translatesAutoresizingMaskIntoConstraints = false
@@ -68,7 +52,6 @@ class DefinitionCellView: UICollectionViewCell {
         super.init(frame: frame)
         
         setUpCollectionCell()
-        
         
     }
     
@@ -106,10 +89,23 @@ class DefinitionCellView: UICollectionViewCell {
         
     }
     
+    /*
+    
     func passingInData(from data: Definition) {
         collectionWord.text = data.word
         collectionSpeech.text = data.type
         collectionDefinition.text = data.definition
+    }
+     
+     */
+    
+    //connecting our data model to the strings we want displayed and then passing the data into our delegate and datasource for cells -- why we added the properties on the bottomVC
+    
+    
+    func passingInData(_ wordDetail: apiWordDetail?, word: String?) {
+        collectionWord.text = word
+        collectionSpeech.text = wordDetail?.partOfSpeech
+        collectionDefinition.text = wordDetail?.definition
     }
 }
 

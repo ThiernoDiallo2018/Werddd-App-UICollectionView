@@ -7,11 +7,17 @@
 
 import UIKit
 
-
-
 class BottomViewController: UIViewController {
-    
+
     // MARK: Properties
+    
+    let networkingDetails: NetworkingLead
+    
+    var words: [apiWordDetail]?
+    var selectedWord: String? // //connects all the way back to the data point in defintion cell in our method - collectionWord.text = word LAYERS
+    
+    
+    
     
    lazy var collectionView: UICollectionView = {
         
@@ -24,16 +30,10 @@ class BottomViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(DefinitionCellView.self, forCellWithReuseIdentifier: DefinitionCellView.ID)
-       
        /*
-       
        collectionView.register(HeaderCollectionView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionView.id)
-       
-       
        */
-       
-       
-       
+        collectionView.backgroundColor = .darkGray
         collectionView.delegate = self
         collectionView.dataSource = self
         return collectionView
@@ -41,30 +41,47 @@ class BottomViewController: UIViewController {
     }()
     
     
+    lazy var searchView: SearchViewBar = {
+        let search = SearchViewBar(searchDefinitionsDelegate: self)
+        search.translatesAutoresizingMaskIntoConstraints =  false
+        search.layer.cornerRadius = 20
+        search.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        return search
+    }()
+    
+    
     
     // MARK: - Logic
+    init(networkingDetails: NetworkingLead = NetworkingLead()) {
+        self.networkingDetails = networkingDetails
+        super.init(nibName: nil, bundle: nil)
+        
+    }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func didMove(toParent parent: UIViewController?) {} // This pushed onto the ViewControllerMain and added as a subview to the BottomContainer UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpCollectionView()
-        
-    
-        
+
     }
     
     func setUpCollectionView() {
         view.addSubview(collectionView)
-        collectionView.backgroundColor = .darkGray
-        collectionView.layer.cornerRadius = 20
-        
+        view.addSubview(searchView)
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            searchView.topAnchor.constraint(equalTo: view.topAnchor),
+            searchView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            searchView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+    
+            collectionView.topAnchor.constraint(equalTo: searchView.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
         
     }
@@ -73,22 +90,30 @@ class BottomViewController: UIViewController {
     
 extension BottomViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return definitions.count
+        return words?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DefinitionCellView.ID, for: indexPath) as? DefinitionCellView else {
+            
             return UICollectionViewCell()
         }
-        cell.passingInData(from: definitions[indexPath.row])
+    
+        
+        cell.passingInData(words?[indexPath.row], word: selectedWord) // //connects all the way back to the data point in defintion cell in our method - collectionWord.text = word
         return cell
     }
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigationController?.pushViewController(SecondDefinitionViewController(definition: definitions[indexPath.row]), animated: true)
+        guard let selectedWord = selectedWord,
+              let selectedWordDetails = words?[indexPath.row] else {
+            print("The code failed")
+            return
+        }
+        navigationController?.pushViewController(SecondDefinitionViewController(wordDetails: selectedWordDetails, selectedWord: selectedWord), animated: true)
+  
     }
-    
     
     /*
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -99,7 +124,6 @@ extension BottomViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }
         return headerView
     }
-    
     
     */
     
@@ -115,68 +139,35 @@ extension BottomViewController: UICollectionViewDelegateFlowLayout {
 
 
 
+extension BottomViewController: SearchDelegate {
+    func searchDefinitionAPI(search word: String?) {
+
+        guard let word = word, !word.isEmpty else {
+            print("Invalid")
+            return
+        }
+
+        networkingDetails.networkingWordDetailsURL(word) { [weak self] result in
+            switch result {
+            case .success(let word):
+                DispatchQueue.main.async {
+                    self?.words = word.results?.filter { $0.definition != nil}
+                    self?.selectedWord = word.word
+                    self?.collectionView.reloadData()
+                }
+            case.failure( _ ):
+                print("You fucked up Thierno")
+            }
+            
+        }
 
 
 
-
-
-
-    
-    /*
-    
-    let tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.backgroundColor = .gray
-        return tableView
-        
-    }()
-    
-    override func didMove(toParent parent: UIViewController?) {}
-    
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        view.addSubview(tableView)
-        
-        tableView.dataSource = self
-        tableView.separatorColor = .white
-        tableView.layer.cornerRadius = 30
-
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
-        
     }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        //cell.contentView.backgroundColor = .black -- this will mess up the cells - need to change colors in the viewDidLoad()
-    
-        
-        var contentsOfCell = cell.defaultContentConfiguration()
-        
-        contentsOfCell.text = definitions[indexPath.row].word
-        contentsOfCell.secondaryText = definitions[indexPath.row].definition
-        
-    
-        cell.contentConfiguration = contentsOfCell
-        return cell
-        
-    }
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return definitions.count
-    }
-
 }
 
 
-*/
+
+
+
+  

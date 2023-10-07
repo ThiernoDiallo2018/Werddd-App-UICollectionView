@@ -11,9 +11,15 @@
 		0051E6C12A27591C00A6E0BC /* Definitions2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0051E6C02A27591C00A6E0BC /* Definitions2.swift */; };
 		0051E6C72A280A8C00A6E0BC /* NetworkingLead.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0051E6C62A280A8C00A6E0BC /* NetworkingLead.swift */; };
 		0051E6C92A280B2500A6E0BC /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0051E6C82A280B2500A6E0BC /* APIConstant.swift */; };
-		00999EC12A1DC5F800448F11 /* ReusableUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00999EC02A1DC5F800448F11 /* ReusableUIView.swift */; };
+		00999EC12A1DC5F800448F11 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00999EC02A1DC5F800448F11 /* DetailsView.swift */; };
 		00A688012A33A08D004BD90F /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A688002A33A08D004BD90F /* Word.swift */; };
 		00A688042A33B052004BD90F /* SearchViewBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A688032A33B052004BD90F /* SearchViewBar.swift */; };
+		00B69BAB2A477C72007AB73B /* WerddModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 00B69BA92A477C72007AB73B /* WerddModel.xcdatamodeld */; };
+		00B69BB12A477F7B007AB73B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B69BB02A477F7B007AB73B /* DataManager.swift */; };
+		00B69BB42A48D85E007AB73B /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B69BB32A48D85E007AB73B /* FavoriteViewController.swift */; };
+		00B69BB62A48E1F6007AB73B /* FavoriteWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B69BB52A48E1F6007AB73B /* FavoriteWordCell.swift */; };
+		00B69BB92A491C32007AB73B /* FavoriteWord+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B69BB72A491C32007AB73B /* FavoriteWord+CoreDataClass.swift */; };
+		00B69BBA2A491C32007AB73B /* FavoriteWord+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B69BB82A491C32007AB73B /* FavoriteWord+CoreDataProperties.swift */; };
 		00C4E4802A187ACF0060A9C4 /* DefinitionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C4E47F2A187ACF0060A9C4 /* DefinitionCellView.swift */; };
 		00D636572A1939E300E981B8 /* SecondDefinitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D636562A1939E300E981B8 /* SecondDefinitionViewController.swift */; };
 		00E5B6C92A08328600FEB1FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E5B6C82A08328600FEB1FE /* AppDelegate.swift */; };
@@ -32,9 +38,15 @@
 		0051E6C02A27591C00A6E0BC /* Definitions2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definitions2.swift; sourceTree = "<group>"; };
 		0051E6C62A280A8C00A6E0BC /* NetworkingLead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingLead.swift; sourceTree = "<group>"; };
 		0051E6C82A280B2500A6E0BC /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
-		00999EC02A1DC5F800448F11 /* ReusableUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableUIView.swift; sourceTree = "<group>"; };
+		00999EC02A1DC5F800448F11 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		00A688002A33A08D004BD90F /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		00A688032A33B052004BD90F /* SearchViewBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewBar.swift; sourceTree = "<group>"; };
+		00B69BAA2A477C72007AB73B /* WerddModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WerddModel.xcdatamodel; sourceTree = "<group>"; };
+		00B69BB02A477F7B007AB73B /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		00B69BB32A48D85E007AB73B /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		00B69BB52A48E1F6007AB73B /* FavoriteWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteWordCell.swift; sourceTree = "<group>"; };
+		00B69BB72A491C32007AB73B /* FavoriteWord+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteWord+CoreDataClass.swift"; sourceTree = "<group>"; };
+		00B69BB82A491C32007AB73B /* FavoriteWord+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteWord+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		00C4E47F2A187ACF0060A9C4 /* DefinitionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionCellView.swift; sourceTree = "<group>"; };
 		00D636562A1939E300E981B8 /* SecondDefinitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondDefinitionViewController.swift; sourceTree = "<group>"; };
 		00E5B6C52A08328600FEB1FE /* Werddd App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Werddd App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +98,7 @@
 				00E5B6CC2A08328600FEB1FE /* MainViewController.swift */,
 				00E5B6DC2A08344200FEB1FE /* BottomViewController.swift */,
 				00D636562A1939E300E981B8 /* SecondDefinitionViewController.swift */,
+				00B69BB32A48D85E007AB73B /* FavoriteViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -93,11 +106,12 @@
 		0051E6C52A275AAB00A6E0BC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				00999EC02A1DC5F800448F11 /* ReusableUIView.swift */,
+				00999EC02A1DC5F800448F11 /* DetailsView.swift */,
 				00E5B6DE2A08347200FEB1FE /* CardViewWithColor.swift */,
 				00C4E47F2A187ACF0060A9C4 /* DefinitionCellView.swift */,
-				0051E6BE2A25366600A6E0BC /* HeaderCollectionView.swift */,
 				00A688032A33B052004BD90F /* SearchViewBar.swift */,
+				0051E6BE2A25366600A6E0BC /* HeaderCollectionView.swift */,
+				00B69BB52A48E1F6007AB73B /* FavoriteWordCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -119,9 +133,19 @@
 			path = Button;
 			sourceTree = "<group>";
 		};
+		00B69BB22A477F96007AB73B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				00B69BB02A477F7B007AB73B /* DataManager.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		00E5B6BC2A08328600FEB1FE = {
 			isa = PBXGroup;
 			children = (
+				00B69BB72A491C32007AB73B /* FavoriteWord+CoreDataClass.swift */,
+				00B69BB82A491C32007AB73B /* FavoriteWord+CoreDataProperties.swift */,
 				00E5B6C72A08328600FEB1FE /* Werddd App */,
 				00E5B6C62A08328600FEB1FE /* Products */,
 			);
@@ -138,6 +162,7 @@
 		00E5B6C72A08328600FEB1FE /* Werddd App */ = {
 			isa = PBXGroup;
 			children = (
+				00B69BB22A477F96007AB73B /* Data */,
 				0051E6C32A275A5B00A6E0BC /* System */,
 				0051E6C42A275A8000A6E0BC /* Controllers */,
 				0051E6C52A275AAB00A6E0BC /* Views */,
@@ -147,6 +172,7 @@
 				00E5B6D12A08328800FEB1FE /* Assets.xcassets */,
 				00E5B6D32A08328800FEB1FE /* LaunchScreen.storyboard */,
 				00E5B6D62A08328800FEB1FE /* Info.plist */,
+				00B69BA92A477C72007AB73B /* WerddModel.xcdatamodeld */,
 			);
 			path = "Werddd App";
 			sourceTree = "<group>";
@@ -222,21 +248,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				00E5B6E32A08357500FEB1FE /* Definitions.swift in Sources */,
+				00B69BB12A477F7B007AB73B /* DataManager.swift in Sources */,
 				00E5B6CD2A08328600FEB1FE /* MainViewController.swift in Sources */,
+				00B69BB42A48D85E007AB73B /* FavoriteViewController.swift in Sources */,
+				00B69BB62A48E1F6007AB73B /* FavoriteWordCell.swift in Sources */,
 				00A688012A33A08D004BD90F /* Word.swift in Sources */,
 				00E5B6E12A08355100FEB1FE /* RefreshButton.swift in Sources */,
 				00A688042A33B052004BD90F /* SearchViewBar.swift in Sources */,
 				0051E6C72A280A8C00A6E0BC /* NetworkingLead.swift in Sources */,
 				0051E6C12A27591C00A6E0BC /* Definitions2.swift in Sources */,
 				00E5B6DD2A08344200FEB1FE /* BottomViewController.swift in Sources */,
+				00B69BB92A491C32007AB73B /* FavoriteWord+CoreDataClass.swift in Sources */,
 				0051E6BF2A25366600A6E0BC /* HeaderCollectionView.swift in Sources */,
+				00B69BAB2A477C72007AB73B /* WerddModel.xcdatamodeld in Sources */,
 				00E5B6DF2A08347200FEB1FE /* CardViewWithColor.swift in Sources */,
 				00E5B6C92A08328600FEB1FE /* AppDelegate.swift in Sources */,
 				00E5B6CB2A08328600FEB1FE /* SceneDelegate.swift in Sources */,
 				00D636572A1939E300E981B8 /* SecondDefinitionViewController.swift in Sources */,
 				00C4E4802A187ACF0060A9C4 /* DefinitionCellView.swift in Sources */,
+				00B69BBA2A491C32007AB73B /* FavoriteWord+CoreDataProperties.swift in Sources */,
 				0051E6C92A280B2500A6E0BC /* APIConstant.swift in Sources */,
-				00999EC12A1DC5F800448F11 /* ReusableUIView.swift in Sources */,
+				00999EC12A1DC5F800448F11 /* DetailsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +476,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		00B69BA92A477C72007AB73B /* WerddModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				00B69BAA2A477C72007AB73B /* WerddModel.xcdatamodel */,
+			);
+			currentVersion = 00B69BAA2A477C72007AB73B /* WerddModel.xcdatamodel */;
+			path = WerddModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 00E5B6BD2A08328600FEB1FE /* Project object */;
 }

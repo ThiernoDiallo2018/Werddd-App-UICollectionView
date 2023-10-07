@@ -9,7 +9,7 @@ import Foundation
 
 struct apiWord: Codable {
     let word: String
-    let outPut: [apiWordDetail]?
+    let results: [apiWordDetail]?
 }
 
 

@@ -9,9 +9,9 @@ import UIKit
 
 // this is the view of our UIViews on SecondDetailVC
 
-// the resuable View we will be passing into our Second Def VC
+// the reusable View we will be passing into our Second Def VC
 
-class ReusableUIView: UIView {
+class DetailsView: UIView {
     
 // this will contain the stackView below plus the title label
 

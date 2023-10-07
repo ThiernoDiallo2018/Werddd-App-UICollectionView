@@ -15,8 +15,8 @@ class CardViewWithColor: UIView {
     let word: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Programming"
         label.font = .systemFont(ofSize: 24)
+        label.text = "Grind"
         label.textColor = .white
         return label
     }()
@@ -24,9 +24,9 @@ class CardViewWithColor: UIView {
     let type: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "noun"
         label.font = .italicSystemFont(ofSize: 14)
         label.textColor = .white
+        label.text = "Action"
         return label
     }()
     
@@ -34,11 +34,11 @@ class CardViewWithColor: UIView {
     let definition: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "creating a sequence of instructions to enable the computer to do something"
         label.font = .systemFont(ofSize: 18)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         label.textColor = .white
+        label.text = "The act of pursuing goal or dream through adversity"
         return label
     }()
     
@@ -46,8 +46,8 @@ class CardViewWithColor: UIView {
     //needed to add the lazy var so the property would init at the same time as the others
     
     lazy var refreshButton: RefreshButton = {
-        let button = RefreshButton { //the logic that is being passed in will be set to the completion property which is a closure in refreshbutton class
-            self.completion?()
+        let button = RefreshButton { [weak self] in //the logic that is being passed in will be set to the completion property which is a closure in refreshbutton class
+            self?.completion?()
         }
         
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -62,25 +62,10 @@ class CardViewWithColor: UIView {
         super.init(frame: .zero)
         setUpUII()
     }
-    
-    
-    
-  /*
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setUpUII()
-        
-    }
-    
-    */
-    
-    
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
     
     private func setUpUII() {
         backgroundColor = .black
@@ -92,9 +77,6 @@ class CardViewWithColor: UIView {
         setupButton()
         
     }
-    
-    
-    
     
     func setupWord() {
         addSubview(word)
