@@ -12,7 +12,7 @@ class DefinitionCellView: UICollectionViewCell {
     // In terms of properties - need ID, stack, 3 labels
     
     static let ID = "ViewCellForDefinitions"
-    
+
     private let stackView: UIStackView = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false

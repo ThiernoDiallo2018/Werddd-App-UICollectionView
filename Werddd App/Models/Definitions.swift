@@ -18,6 +18,7 @@ struct Definition {
     let word: String
     let type: String // either "noun" or "adjective"
     let definition: String
+    
     let synonyms: String?
     let antonyms: String?
     let example: String?

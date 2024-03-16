@@ -85,13 +85,11 @@ class ReusableUIView: UIView {
         
         configureViews()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     func configureViews() {
-        
         layer.cornerRadius = 25
         
         titleLabel.text = title
@@ -103,35 +101,24 @@ class ReusableUIView: UIView {
         configuredDescriptionStackView()
         configureTitleLabel()
         configureStacks()
-        
     }
-    
     func configuredDescriptionStackView() {
-        
         descriptionStackView.addArrangedSubview(partsOfSpeech)
         descriptionStackView.addArrangedSubview(descriptionLabel)
         stackView.addArrangedSubview(descriptionStackView)
         
     }
-    
     func configureTitleLabel() {
         stackView.addArrangedSubview(titleLabel)
         
     }
-    
     func configureStacks() {
         addSubview(stackView) // we have added everything the view of UIView here
-        
-        
         NSLayoutConstraint.activate([
-        
             stackView.topAnchor.constraint(equalTo: topAnchor, constant: 20),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
-        
-        
-        
         ])
         
     }
